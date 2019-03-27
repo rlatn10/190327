@@ -1,0 +1,30 @@
+/*문제 1. 다이아몬드
+중간 부분의 *의 개수(홀수)를 입력받고
+다이아몬드가 출력되는 프로그램을 구성하시오.
+*/
+
+#include <stdio.h>
+
+void main(void) {
+
+	int ivalue;
+
+	printf("the number of *diamond's middle "); 
+	scanf_s ("%d", &ivalue);                    
+
+	for (int i = 0; i < ivalue; i = i + 2) {   
+		for (int j = ivalue; j > i; j = j - 2)  
+			printf(" ");
+		for (int k = 0; k <= i; k++)          
+			printf("*");
+		printf("\n");
+	}
+	for (int i = ivalue - 2; i > 1 - 2; i = i - 2) {
+		for (int j = i; j <= ivalue; j = j + 2)
+			printf(" ");
+		for (int k = i; k > 0; k--)
+			printf("*");
+		printf("\n");
+	}
+
+}
