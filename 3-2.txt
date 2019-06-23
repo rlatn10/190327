@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+ 
+
+ void main(void) {
+ 
+
+   printf("========== 메뉴 =========\n");
+   printf("PUSH : 1\n");
+   printf("POP : 2\n");
+   printf("SHOW : 3\n");
+   printf("(종료 하려면 1,2,3 을 제외한 수 입력)\n\n");
+ 
+
+    int sel = 1, value, stack[10] = { 0 }, index = 0; //배열 선언 , 모든 인덱스 값 0으로 초기화 
+ 
+
+    while (sel == 1 || sel == 2 || sel == 3) {  //1,2,3을 제외한 값이 입력 될시 프로그램 종료 
+  
+
+      printf("메뉴를 선택하세요 : ");
+   scanf_s("%d", &sel);
+  
+
+      switch (sel)
+      {
+      case 1:                             //1이 입력 되었을때
+        printf("수 입력 : ");       
+        scanf_s("%d", &value);      //PUSH할 값을 받음
+        stack[index] = value;  //현재 인덱스 값에 수를 입력 후 다음 인덱스로 위치 이동 
+        index++;
+        break;
+     case 2:
+        index--;                    //직전 인덱스 위치로 이동후
+        stack[index] = 0;   //값을 0으로 초기화 
+        break;
+      case 3:
+        for (int count = 0; count <= 9; count++) { 
+          if (stack[count] != 0)
+            printf("%d ", stack[count]);  //0으로 초기화된 값을 제외한 모든 값 출력
+     
+    }
+        printf("\n");
+        break;
+      default:
+        printf("========= 스택 프로그램을 종료합니다 ==========\n");
+       }
