@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+ void inRect(int* x, int* y, int* tx1, int* ty1, int* tx2, int* ty2, int* t);
+
+
+ void main(void) {
+ 
+
+    int box[2][8], test;
+ 
+
+  
+
+    for (int i = 0; i <= 1; i++) {   //for문 사용해서 1사각형과 2사각형의 값 입력받음
+     printf("box%d  x1 y1 x2 y2 순으로 입력하세요 : ", i + 1);
+     scanf("%d %d %d %d", &box[i][0], &box[i][1], &box[i][2], &box[i][3]);   //사각형의 좌측아래 모서리와 우측아래 모서리 좌표값을 입력받음
+     box[i][4] = box[i][2];       //입력받은 사각형의 좌표값을 이용해서 사각형의 좌측위모서리와 우측아래 모서리도 값을 넣음
+     box[i][5] = box[i][1];
+     box[i][6] = box[i][0];
+     box[i][7] = box[i][3];
+  
+ }
+ 
+
+    for (int i = 0, x = 1; i <= 1; i++, x--) {
+     test = 0;
+     for (int j = 0; j < 7; j = j + 2) {
+       if (test != 1) {
+         inRect(&box[x][j], &box[x][j + 1], &box[i][0], &box[i][1], &box[i][2], &box[i][3], &test);
+    
+   }
+   
+  }
+  
+ }
+ 
+
+    if (test == 1) {           //1이 돌려져왔을시
+
+     printf("Overlap\n");     // Overlap출력하고
+
+  
+ }
+   else {
+     printf("NO overlap\n");     //그렇지 않다면 NO overlap 출력
+  
+ }
+ 
+
+  
+}
+
+
+ void inRect(int* x, int* y, int* tx1, int* ty1, int* tx2, int* ty2, int* t) {
+   if ((*x >= *tx1 && *x <= *tx2) && (*y >= *ty1 && *y <= *ty2)) {    //오버랩 현상이 일어났는지 확인
+   * t = 1;    //발생시 1
+  
+ }
+   else {
+   * t = 0;   //발생하지 않으면 0
+  
+ }
+ 
+}
+ 
